@@ -1,0 +1,8 @@
+[Container]
+Pod=proxy.pod
+Network=backbone
+Image=docker.io/library/caddy:2.8
+AutoUpdate=registry
+Label="app=caddy"
+Volume=caddy-data.volume:/data:z
+Volume=/etc/caddy:/etc/caddy:Z
