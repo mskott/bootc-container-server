@@ -1,5 +1,7 @@
+[Unit]
+Description=Backbone network used for communication between containers
+
 [Pod]
-Network=backbone
+Network=backbone.network
 PublishPort=80:80
 PublishPort=443:443
-Label="app=caddy"
