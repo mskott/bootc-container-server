@@ -3,7 +3,7 @@ RUN dnf install -y \
     NetworkManager-wifi \
     NetworkManager-wwan \
     wpa_supplicant \
-    wireless-regdb
+    wireless-regdb \
     cockpit \
 #    cockpit-machines \
     cockpit-podman \
