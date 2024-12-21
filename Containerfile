@@ -14,6 +14,6 @@ RUN systemctl enable \
     podman-auto-update.timer
 
 COPY quadlets/ /usr/share/containers/systemd/
-COPY etc /etc
+COPY etc /usr/local/etc
 
 RUN bootc container lint

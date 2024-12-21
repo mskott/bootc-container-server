@@ -8,7 +8,7 @@ Image=docker.io/library/caddy:2.8
 AutoUpdate=registry
 Label="app=caddy"
 Volume=caddy-data.volume:/data:z
-Volume=/etc/caddy:/etc/caddy:Z
+Volume=/usr/local/etc/caddy:/etc/caddy:Z
 
 [Install]
 WantedBy=default.target
