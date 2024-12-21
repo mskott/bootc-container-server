@@ -1,10 +1,13 @@
 FROM quay.io/fedora/fedora-bootc:41
 RUN dnf install -y \
+    NetworkManager-wifi \
+    NetworkManager-wwan \
+    wpa_supplicant \
+    wireless-regdb
     cockpit \
-    cockpit-machines \
+#    cockpit-machines \
     cockpit-podman \
     cockpit-selinux \
-    cockpit-storaged \
     && dnf clean all
 RUN systemctl enable \
     cockpit.socket \
@@ -12,3 +15,5 @@ RUN systemctl enable \
 
 COPY quadlets/ /usr/share/containers/systemd/
 COPY etc /etc
+
+RUN bootc container lint
