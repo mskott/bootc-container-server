@@ -15,6 +15,5 @@ RUN systemctl enable \
 
 COPY quadlets/ /usr/share/containers/systemd/
 COPY etc /usr/local/etc
-COPY sysusers.d /usr/lib/sysusers.d/ 
 
 RUN bootc container lint

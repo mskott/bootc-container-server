@@ -1,0 +1,5 @@
+[Unit]
+Description=Config volume used by Jellyfin
+
+[Volume]
+Label=app=jellyfin

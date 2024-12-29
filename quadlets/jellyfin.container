@@ -1,0 +1,21 @@
+[Unit]
+Description=The Jellyfin media server in a container
+
+[Container]
+Label=app=jellyfin
+Image=docker.io/jellyfin/jellyfin:latest
+AutoUpdate=registry
+Pod=jellyfin.pod
+#PublishPort=8096:8096
+Volume=jellyfin-cache.volume:/cache:Z
+Volume=jellyfin-config.volume:/config:Z
+#Volume={{ jellyfin_media }}:/media:ro,z
+#AddDevice=/dev/dri
+UserNS=keep-id
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target default.target
