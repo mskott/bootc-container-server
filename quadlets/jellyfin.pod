@@ -1,2 +1,0 @@
-[Pod]
-PublishPort=8096:8096

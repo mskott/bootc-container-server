@@ -5,12 +5,11 @@ Description=The Jellyfin media server in a container
 Label=app=jellyfin
 Image=docker.io/jellyfin/jellyfin:latest
 AutoUpdate=registry
-Pod=jellyfin.pod
-#PublishPort=8096:8096
+PublishPort=8096:8096
 Volume=jellyfin-cache.volume:/cache:Z
 Volume=jellyfin-config.volume:/config:Z
 #Volume={{ jellyfin_media }}:/media:ro,z
-#AddDevice=/dev/dri
+AddDevice=/dev/dri
 UserNS=keep-id
 
 [Service]
