@@ -1,5 +1,6 @@
 [Unit]
 Description=The Jellyfin media server in a container
+After=var-local-media.mount
 
 [Container]
 Label=app=jellyfin
@@ -8,7 +9,7 @@ AutoUpdate=registry
 PublishPort=8096:8096
 Volume=jellyfin-cache.volume:/cache:Z
 Volume=jellyfin-config.volume:/config:Z
-#Volume={{ jellyfin_media }}:/media:ro,z
+Volume=/var/local/media:/media:ro,z
 AddDevice=/dev/dri
 UserNS=keep-id
 

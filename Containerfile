@@ -13,7 +13,13 @@ RUN systemctl enable \
     cockpit.socket \
     podman-auto-update.timer
 
+COPY mounts/ /usr/lib/systemd/system/
+
+RUN systemctl enable \
+    var-local-media.mount \
+    var-local-spinnaker.mount \
+    var-local-marie.mount 
+
 COPY quadlets/ /usr/share/containers/systemd/
-COPY etc /usr/local/etc
 
 RUN bootc container lint

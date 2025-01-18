@@ -1,0 +1,7 @@
+[Mount]
+What=/dev/export/media
+Where=/var/local/media
+Type=xfs
+
+[Install]
+WantedBy=multi-user.target

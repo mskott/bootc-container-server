@@ -1,0 +1,7 @@
+[Mount]
+What=/dev/export/spinnaker
+Where=/var/local/spinnaker
+Type=xfs
+
+[Install]
+WantedBy=multi-user.target

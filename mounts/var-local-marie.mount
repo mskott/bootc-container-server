@@ -1,0 +1,7 @@
+[Mount]
+What=/dev/export/marie
+Where=/var/local/marie
+Type=xfs
+
+[Install]
+WantedBy=multi-user.target
