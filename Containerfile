@@ -1,13 +1,13 @@
 FROM quay.io/fedora/fedora-bootc:41
 RUN dnf install -y \
     NetworkManager-wifi \
-    NetworkManager-wwan \
     wpa_supplicant \
     wireless-regdb \
     cockpit \
 #    cockpit-machines \
     cockpit-podman \
     cockpit-selinux \
+    rsync \
     && dnf clean all
 RUN systemctl enable \
     cockpit.socket \
