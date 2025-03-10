@@ -8,7 +8,7 @@ RUN dnf install -y \
     cockpit-podman \
     cockpit-selinux \
     rsync \
-    && dnf clean all
+    && dnf clean all && rm -f /var/log/dnf5.log
 RUN systemctl enable \
     cockpit.socket \
     podman-auto-update.timer
