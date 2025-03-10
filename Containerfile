@@ -14,6 +14,7 @@ RUN systemctl enable \
     podman-auto-update.timer
 
 COPY mounts/ /usr/lib/systemd/system/
+COPY 00-disable-pcie-aspm.toml /usr/lib/bootc/kargs.d/
 
 RUN systemctl enable \
     var-local-media.mount \

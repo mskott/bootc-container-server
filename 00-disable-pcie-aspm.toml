@@ -1,0 +1,3 @@
+# Disable PCIe power management
+# Stop issue on Dell OptiPlex 3060
+kargs = ["pcie_aspm=off"]

@@ -4,7 +4,7 @@ Build and push container image
 
 #+begin_src shell
   podman login https://quay.io/mskoett42
-  podman build -t quay.io/mskoett42/bootc-container-server:41 .
+  podman build --pull=newer -t quay.io/mskoett42/bootc-container-server:41 .
   podman push quay.io/mskoett42/bootc-container-server:41
 #+end_src
 
@@ -23,6 +23,5 @@ Build installer ISO
       quay.io/centos-bootc/bootc-image-builder:latest \
       --type anaconda-iso \
       --rootfs xfs \
-      --local \
       quay.io/mskoett42/bootc-container-server:41
 #+end_src
