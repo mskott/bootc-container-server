@@ -27,6 +27,12 @@ jobs:
           tags: ${{ env.FEDORA_RELEASE }}
           containerfiles: |
             ./Containerfile
+      - name: Login to registry
+        uses: redhat-actions/podman-login@v1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ vars.REGISTRY_USER }}
+          password: ${{ secrets.QUAY_TOKEN }}
 
       - name: Push image to registry
         uses: redhat-actions/push-to-registry@v2
@@ -34,5 +40,3 @@ jobs:
           image: ${{ steps.build-image.outputs.image }}
           tags: ${{ steps.build-image.outputs.tags }}
           registry: ${{ env.REGISTRY }}
-          username: ${{ vars.REGISTRY_USER }}
-          password: ${{ secrets.QUAY_TOKEN }}
