@@ -1,8 +1,7 @@
 ---
 name: Build bootc container image
 
-on:
-  push
+on: [push, workflow_dispatch]
 env:
   REGISTRY: quay.io
   IMAGE_NAME: mskoett42/bootc-container-server
