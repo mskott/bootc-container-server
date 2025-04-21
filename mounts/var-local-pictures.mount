@@ -1,0 +1,7 @@
+[Mount]
+What=/dev/export/pictures
+Where=/var/local/pictures
+Type=xfs
+
+[Install]
+WantedBy=multi-user.target

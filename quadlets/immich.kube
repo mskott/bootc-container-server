@@ -1,5 +1,6 @@
 [Unit]
 Description=Immich photo management
+After=var-local-pictures.mount
 
 [Kube]
 Yaml=/usr/local/etc/immich.yaml

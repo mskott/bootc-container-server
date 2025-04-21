@@ -87,6 +87,9 @@ spec:
       mountPath: /usr/src/app/upload
     - name: localtime
       mountPath: /etc/localtime
+    - name: pictures
+      mountPath: /mnt/Pictures
+      readOnly: true
   volumes:
   - name: postgresql-data
     persistentVolumeClaim:
@@ -101,3 +104,7 @@ spec:
     hostPath:
       path: /etc/localtime
       type: File
+  - name: pictures
+    hostPath:
+      path: /var/local/pictures
+      type: Directory
