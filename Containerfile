@@ -19,7 +19,8 @@ COPY 00-disable-pcie-aspm.toml /usr/lib/bootc/kargs.d/
 RUN systemctl enable \
     var-local-media.mount \
     var-local-spinnaker.mount \
-    var-local-marie.mount 
+    var-local-marie.mount \
+    var-local-pictures.mount
 
 COPY quadlets/ /usr/share/containers/systemd/
 COPY immich.yaml /usr/local/etc/
