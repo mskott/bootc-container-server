@@ -22,5 +22,6 @@ RUN systemctl enable \
     var-local-marie.mount 
 
 COPY quadlets/ /usr/share/containers/systemd/
+COPY immich.yaml /usr/local/etc/
 
 RUN bootc container lint

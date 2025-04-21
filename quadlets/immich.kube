@@ -1,0 +1,8 @@
+[Unit]
+Description=Immich photo management
+
+[Kube]
+Yaml=/usr/local/etc/immich.yaml
+
+[Install]
+WantedBy=multi-user.target default.target
