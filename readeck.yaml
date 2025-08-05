@@ -1,0 +1,38 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: readeck-data
+  labels:
+    app: readeck
+spec:
+  accessModes:
+    - ReadWriteOnce
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: readeck
+  labels:
+    app: readeck
+  annotations:
+    io.containers.autoupdate: registry
+spec:
+  containers:
+    - name: readeck
+      image: codeberg.org/readeck/readeck:latest
+      livenessProbe:
+        exec:
+          command:
+            - /bin/readeck
+            - healthcheck
+      volumeMounts:
+        - name: readeck-data
+          mountPath: /readeck
+      ports:
+        - containerPort: 8000
+          hostPort: 8000
+  volumes:
+    - name: readeck-data
+      persistentVolumeClaim:
+        claimName: readeck-data
