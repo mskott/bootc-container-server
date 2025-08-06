@@ -1,0 +1,8 @@
+[Unit]
+Description=Readeck
+
+[Kube]
+Yaml=/usr/local/etc/readeck.yaml
+
+[Install]
+WantedBy=multi-user.target default.target
