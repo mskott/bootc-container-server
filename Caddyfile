@@ -1,0 +1,16 @@
+http://guppy.local, http://guppy.z3n.dk {
+	header Content-Type text/html
+	respond <<HTML
+		<html><head><title>Hello, guppy.local</title></head>
+		<body><h1>Hello from guppy.local</h1></body>
+		</html>
+		HTML 200
+}
+
+http://read.z3n.dk {
+	reverse_proxy readeck:8000
+}
+
+http://photos.z3n.dk {
+	reverse_proxy immich:2283
+}
