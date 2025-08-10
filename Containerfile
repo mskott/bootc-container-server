@@ -23,6 +23,7 @@ RUN systemctl enable \
     var-local-pictures.mount
 
 COPY quadlets/ /usr/share/containers/systemd/
-COPY immich.yaml readeck.yaml /usr/local/etc/
+COPY Caddyfile /usr/local/etc/caddy/
+COPY immich.yaml readeck.yaml caddy.yaml /usr/local/etc/
 
 RUN bootc container lint

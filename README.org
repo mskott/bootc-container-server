@@ -25,3 +25,17 @@ Build installer ISO
       --rootfs xfs \
       quay.io/mskoett42/bootc-container-server:41
 #+end_src
+
+** Caddy web server
+Caddy's config parser is sensitive to indentation and will fail to start if
+something is wrong. The configuration can be validated using:
+
+#+begin_src shell
+  podman run --rm -it  -v ${PWD}/:/etc/caddy:Z docker.io/caddy:2.10 caddy validate --config /etc/caddy/Caddyfile
+#+end_src
+
+Caddy has a built-in formatter and prettifier for the Caddyfile:
+
+#+begin_src shell
+  podman run --rm -it  -v ${PWD}/:/etc/caddy:Z docker.io/caddy:2.10 caddy fmt /etc/caddy/Caddyfile
+#+end_src

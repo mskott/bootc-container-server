@@ -1,0 +1,8 @@
+[Unit]
+Description=Caddy web server
+
+[Kube]
+Yaml=/usr/local/etc/caddy.yaml
+
+[Install]
+WantedBy=multi-user.target default.target
