@@ -1,8 +1,5 @@
 FROM quay.io/fedora/fedora-bootc:42
 RUN dnf install -y \
-    NetworkManager-wifi \
-    wpa_supplicant \
-    wireless-regdb \
     cockpit \
 #    cockpit-machines \
     cockpit-podman \
