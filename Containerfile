@@ -5,6 +5,8 @@ RUN dnf install -y \
     cockpit-podman \
     cockpit-selinux \
     rsync \
+    tmux \
+    borgbackup borgmatic \
     && dnf clean all && rm -f /var/log/dnf5.log
 RUN systemctl enable \
     cockpit.socket \
