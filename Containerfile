@@ -25,4 +25,4 @@ COPY quadlets/ /usr/share/containers/systemd/
 COPY Caddyfile /usr/local/etc/caddy/
 COPY immich.yaml readeck.yaml caddy.yaml /usr/local/etc/
 
-RUN bootc container lint
+RUN bootc container lint --no-truncate
