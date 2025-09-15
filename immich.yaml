@@ -36,7 +36,8 @@ metadata:
   labels:
     app: immich
   annotations:
-    io.containers.autoupdate: registry
+    io.containers.autoupdate/immich-ml: registry
+    io.containers.autoupdate/immich-server: registry
 spec:
   containers:
   - name: redis
