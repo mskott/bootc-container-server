@@ -7,6 +7,7 @@ RUN dnf install -y \
     rsync \
     tmux \
     borgbackup borgmatic \
+    smartmontools \
     && dnf clean all && rm -f /var/log/dnf5.log
 RUN systemctl enable \
     cockpit.socket \
