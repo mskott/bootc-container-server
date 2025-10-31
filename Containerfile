@@ -1,4 +1,5 @@
 FROM quay.io/fedora/fedora-bootc:42
+COPY tailscale.repo /etc/yum.repos.d/
 RUN dnf install -y \
     cockpit \
 #    cockpit-machines \
@@ -8,10 +9,12 @@ RUN dnf install -y \
     tmux \
     borgbackup borgmatic \
     smartmontools \
+    tailscale \
     && dnf clean all && rm -f /var/log/dnf5.log
 RUN systemctl enable \
     cockpit.socket \
-    podman-auto-update.timer
+    podman-auto-update.timer \
+    tailscaled
 
 COPY mounts/ /usr/lib/systemd/system/
 COPY 00-disable-pcie-aspm.toml /usr/lib/bootc/kargs.d/
