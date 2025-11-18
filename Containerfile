@@ -30,5 +30,7 @@ RUN systemctl enable \
 COPY quadlets/ /usr/share/containers/systemd/
 COPY Caddyfile /usr/local/etc/caddy/
 COPY immich.yaml readeck.yaml caddy.yaml /usr/local/etc/
+COPY tmpfiles.d/alloy.conf /usr/local/lib/tmpfiles.d/alloy.conf
+COPY sysysers.d/alloy.conf /usr/local/lib/sysusers.d/alloyd.conf
 
 RUN bootc container lint --no-truncate
