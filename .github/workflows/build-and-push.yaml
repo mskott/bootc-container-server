@@ -10,7 +10,7 @@ on:
 env:
   REGISTRY: quay.io
   IMAGE_NAME: mskoett42/bootc-container-server
-  FEDORA_RELEASE: 42
+  FEDORA_RELEASE: 43
 
 jobs:
   build-and-push-image:

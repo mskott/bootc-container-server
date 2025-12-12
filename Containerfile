@@ -1,4 +1,4 @@
-FROM quay.io/fedora/fedora-bootc:42
+FROM quay.io/fedora/fedora-bootc:43
 COPY grafana.repo /etc/yum.repos.d/
 RUN dnf install -y \
     cockpit \
