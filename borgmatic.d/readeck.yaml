@@ -1,0 +1,7 @@
+<<: !include /etc/borgmatic/common.yaml
+
+constants:
+  app_name: readeck
+
+source_directories:
+  - /var/lib/containers/storage/volumes/readeck-data

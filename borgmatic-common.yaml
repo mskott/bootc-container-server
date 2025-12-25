@@ -1,0 +1,24 @@
+# Common settings used for borgmatic backups
+repositories:
+    - path: ssh://z61amm2u@z61amm2u.repo.borgbase.com/./repo
+      label: remote
+
+# Repo password is stored in systemd credentials
+encryption_passphrase: "{credential systemd borgmatic.pw}"
+
+compression: auto,zstd
+archive_name_format: '{app_name}-{now:%Y-%m-%d-%H%M%S}'
+
+# Number of times to retry a failing backup before giving up.
+retries: 5
+retry_wait: 5
+
+keep_daily: 3
+keep_weekly: 4
+keep_monthly: 12
+
+# Don't read whole repo each time
+skip_actions:
+    - check
+
+check_last: 3

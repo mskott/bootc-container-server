@@ -14,7 +14,8 @@ RUN dnf install -y \
 RUN systemctl enable \
     cockpit.socket \
     podman-auto-update.timer \
-    alloy.service
+    alloy.service \
+    borgmatic.timer
 
 COPY mounts/ /usr/lib/systemd/system/
 COPY 00-disable-pcie-aspm.toml /usr/lib/bootc/kargs.d/
@@ -30,5 +31,9 @@ COPY Caddyfile /usr/local/etc/caddy/
 COPY immich.yaml readeck.yaml caddy.yaml /usr/local/etc/
 COPY tmpfiles.d/alloy.conf /usr/local/lib/tmpfiles.d/alloy.conf
 COPY sysusers.d/alloy.conf /usr/local/lib/sysusers.d/alloy.conf
+
+# Borgmatic setup
+COPY borgmatic-common.yaml /etc/borgmatic/common.yaml
+COPY borgmatic.d/ /etc/borgmatic.d/
 
 RUN bootc container lint --no-truncate
