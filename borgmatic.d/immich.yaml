@@ -1,0 +1,15 @@
+<<: !include /etc/borgmatic/common.yaml
+
+constants:
+  app_name: immich
+
+source_directories:
+  - /var/lib/containers/storage/volumes/immich-data
+
+# Based on this template script from Immich:
+#  https://docs.immich.app/guides/template-backup-script/
+exclude_patterns:
+  - /var/lib/containers/storage/volumes/immich-data/encoded-video
+  - /var/lib/containers/storage/volumes/immich-data/thumbs
+
+# TODO: backing up backups/ is ineffecient. Replace with a proper pg_dump
