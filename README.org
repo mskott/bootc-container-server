@@ -39,3 +39,9 @@ Caddy has a built-in formatter and prettifier for the Caddyfile:
 #+begin_src shell
   podman run --rm -it  -v ${PWD}/:/etc/caddy:Z docker.io/caddy:2.10 caddy fmt /etc/caddy/Caddyfile
 #+end_src
+
+** Backups
+Backup is handled by [[https://torsion.org/borgmatic/][borgmatic]] run daily by a systemd timer. Backups are
+configured at an application level in [[file:borgmatic.d/][borgmatic.d]] where each file inherits common settings from [[file:borgmatic-common.yaml][borgmatic-common.yaml]]. All backups go to the same repository, but with different archive names. The archive name is derived from the ~app_name~ constant defined in the application specific configuration.
+
+The repository password is stored in a systemd secret created in this way: ~systemd-ask-password -n | systemd-creds encrypt - /etc/credstore.encrypted/borgmatic.pw~
