@@ -17,7 +17,7 @@ RUN systemctl enable \
     alloy.service \
     borgmatic.timer
 
-COPY mounts/ /usr/lib/systemd/system/
+COPY units/ /usr/lib/systemd/system/
 COPY 00-disable-pcie-aspm.toml /usr/lib/bootc/kargs.d/
 
 RUN systemctl enable \
