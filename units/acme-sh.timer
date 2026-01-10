@@ -4,3 +4,7 @@ ConditionPathExists=/etc/acme.sh/account.conf
 
 [Timer]
 OnCalendar=daily
+RandomizedDelaySec=100min
+
+[Install]
+WantedBy=timers.target
