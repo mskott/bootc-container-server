@@ -11,11 +11,6 @@ RUN dnf install -y \
     smartmontools \
     alloy \
     && dnf clean all && rm -f /var/log/dnf5.log
-RUN systemctl enable \
-    cockpit.socket \
-    podman-auto-update.timer \
-    alloy.service \
-    borgmatic.timer
 
 COPY units/ /usr/lib/systemd/system/
 COPY 00-disable-pcie-aspm.toml /usr/lib/bootc/kargs.d/
@@ -24,7 +19,13 @@ RUN systemctl enable \
     var-local-media.mount \
     var-local-spinnaker.mount \
     var-local-marie.mount \
-    var-local-pictures.mount
+    var-local-pictures.mount \
+    cockpit.socket \
+    podman-auto-update.timer \
+    alloy.service \
+    borgmatic.timer \
+    acme-sh.timer
+
 
 COPY quadlets/ /usr/share/containers/systemd/
 COPY Caddyfile /usr/local/etc/caddy/

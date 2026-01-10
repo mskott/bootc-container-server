@@ -1,0 +1,6 @@
+[Unit]
+Description=Renew acme.sh certificates
+ConditionPathExists=/etc/acme.sh/account.conf
+
+[Timer]
+OnCalendar=daily

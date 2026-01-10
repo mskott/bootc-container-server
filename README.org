@@ -45,3 +45,18 @@ Backup is handled by [[https://torsion.org/borgmatic/][borgmatic]] run daily by 
 configured at an application level in [[file:borgmatic.d/][borgmatic.d]] where each file inherits common settings from [[file:borgmatic-common.yaml][borgmatic-common.yaml]]. All backups go to the same repository, but with different archive names. The archive name is derived from the ~app_name~ constant defined in the application specific configuration.
 
 The repository password is stored in a systemd secret created in this way: ~systemd-ask-password -n | systemd-creds encrypt - /etc/credstore.encrypted/borgmatic.pw~
+
+** Certificates
+Cerfificates are managed by [[https://acme.sh/][acme.sh]] which is run on a daily basis by a systemd timer. acme.sh requires some setup before it can be run automatically:
+
+#+begin_src shell
+  # Register account. eab-kid and eab-hmac-key can be found on zerossl.com
+  podman run --rm -it -v /etc/acme.sh:/acme.sh:Z docker.io/neilpang/acme.sh:latest --register-account --eab-kid <eab-kid> --eab-hmac-key <eab-hmac-key>
+
+  # Auth for simply.com
+  export SIMPLY_ApiKey=<api key>
+  export SIMPLY_AccountName=<account name>
+
+  # Issue cert for *.z3n.dk
+  podman run --rm -it -v /etc/acme.sh:/acme.sh:Z --env=SIMPLY_* docker.io/neilpang/acme.sh:latest --issue --dns dns_simply -d *.z3n.dk
+#+end_src

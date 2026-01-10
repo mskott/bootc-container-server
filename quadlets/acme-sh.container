@@ -1,0 +1,12 @@
+[Unit]
+Description=Renew SSL certificates using acme.sh
+
+[Container]
+Image=docker.io/neilpang/acme.sh:latest
+AutoUpdate=registry
+Volume=/etc/acme.sh:/acme.sh:Z
+Exec=--cron
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
