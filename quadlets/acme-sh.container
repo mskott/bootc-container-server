@@ -2,9 +2,10 @@
 Description=Renew SSL certificates using acme.sh
 
 [Container]
+Label=app=acme.sh
 Image=docker.io/neilpang/acme.sh:latest
 AutoUpdate=registry
-Volume=/etc/acme.sh:/acme.sh:Z
+Volume=acme-sh-volume:/acme.sh:Z
 Exec=--cron
 
 [Service]

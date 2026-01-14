@@ -26,6 +26,8 @@ spec:
           mountPath: /data
         - name: caddy-config
           mountPath: /etc/caddy
+        - name: acme-sh
+          mountPath: /etc/acme.sh
       ports:
         - containerPort: 80
           hostPort: 80
@@ -39,3 +41,6 @@ spec:
       hostPath:
         path: /usr/local/etc/caddy
         type: Directory
+    - name: acme-sh
+      persistentVolumeClaim:
+        claimName: acme-sh
