@@ -1,16 +1,24 @@
-http://guppy.local, http://guppy.z3n.dk {
-	header Content-Type text/html
-	respond <<HTML
-		<html><head><title>Hello, guppy.local</title></head>
-		<body><h1>Hello from guppy.local</h1></body>
+*.z3n.dk {
+	tls /etc/acme.sh/*.z3n.dk_ecc/*.z3n.dk.cer /etc/acme.sh/*.z3n.dk_ecc/*.z3n.dk.key {
+	}
+
+	@guppy host guppy.z3n.dk
+	handle @guppy {
+		header Content-Type text/html
+		respond <<HTML
+		<html><head><title>Hello, guppy.z3n.dk</title></head>
+		<body><h1>Hello from guppy.z3n.dk</h1></body>
 		</html>
 		HTML 200
-}
+	}
 
-http://read.z3n.dk {
-	reverse_proxy readeck:8000
-}
+	@read host read.z3n.dk
+	handle @read {
+		reverse_proxy readeck:8000
+	}
 
-http://photos.z3n.dk {
-	reverse_proxy immich:2283
+	@photos host photos.z3n.dk
+	handle @photos {
+		reverse_proxy immich:2283
+	}
 }
