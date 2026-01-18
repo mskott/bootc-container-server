@@ -51,12 +51,12 @@ Cerfificates are managed by [[https://acme.sh/][acme.sh]] which is run on a dail
 
 #+begin_src shell
   # Register account. eab-kid and eab-hmac-key can be found on zerossl.com
-  podman run --rm -it -v acme-sh:/acme.sh:Z docker.io/neilpang/acme.sh:latest --register-account --eab-kid <eab-kid> --eab-hmac-key <eab-hmac-key>
+  podman run --rm -it -v acme-sh:/acme.sh:z docker.io/neilpang/acme.sh:latest --register-account --eab-kid <eab-kid> --eab-hmac-key <eab-hmac-key>
 
   # Auth for simply.com
   export SIMPLY_ApiKey=<api key>
   export SIMPLY_AccountName=<account name>
 
   # Issue cert for *.z3n.dk
-  podman run --rm -it -v acme-sh:/acme.sh:Z --env=SIMPLY_* docker.io/neilpang/acme.sh:latest --issue --dns dns_simply -d *.z3n.dk
+  podman run --rm -it -v acme-sh:/acme.sh:z --env=SIMPLY_* docker.io/neilpang/acme.sh:latest --issue --dns dns_simply -d *.z3n.dk
 #+end_src
