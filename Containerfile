@@ -10,6 +10,7 @@ RUN dnf install -y \
     borgbackup borgmatic \
     smartmontools \
     alloy \
+    tcpdump \
     && dnf clean all && rm -f /var/log/dnf5.log
 
 COPY units/ /usr/lib/systemd/system/
