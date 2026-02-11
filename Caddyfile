@@ -1,5 +1,5 @@
 *.z3n.dk {
-	tls /etc/acme.sh/*.z3n.dk_ecc/*.z3n.dk.cer /etc/acme.sh/*.z3n.dk_ecc/*.z3n.dk.key {
+	tls /etc/acme.sh/*.z3n.dk_ecc/fullchain.cer /etc/acme.sh/*.z3n.dk_ecc/*.z3n.dk.key {
 	}
 
 	@guppy host guppy.z3n.dk
