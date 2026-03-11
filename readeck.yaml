@@ -26,6 +26,7 @@ spec:
           command:
             - /bin/readeck
             - healthcheck
+        periodSeconds: 300
       volumeMounts:
         - name: readeck-data
           mountPath: /readeck
