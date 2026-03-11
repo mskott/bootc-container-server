@@ -11,6 +11,7 @@ RUN dnf install -y \
     smartmontools \
     alloy \
     tcpdump \
+    tuned \
     && dnf clean all && rm -f /var/log/dnf5.log
 
 COPY units/ /usr/lib/systemd/system/
