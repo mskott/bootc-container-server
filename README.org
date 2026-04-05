@@ -47,16 +47,16 @@ configured at an application level in [[file:borgmatic.d/][borgmatic.d]] where e
 The repository password is stored in a systemd secret created in this way: ~systemd-ask-password -n | systemd-creds encrypt - /etc/credstore.encrypted/borgmatic.pw~
 
 ** Certificates
-Cerfificates are managed by [[https://acme.sh/][acme.sh]] which is run on a daily basis by a systemd timer. acme.sh requires some setup before it can be run automatically:
+Certificates are managed by [[https://acme.sh/][acme.sh]] which is run on a daily basis by a [[file:units/acme-sh.timer][systemd timer]]. acme.sh requires some setup before it can be run automatically:
 
 #+begin_src shell
-  # Register account. eab-kid and eab-hmac-key can be found on zerossl.com
-  podman run --rm -it -v acme-sh:/acme.sh:z docker.io/neilpang/acme.sh:latest --register-account --eab-kid <eab-kid> --eab-hmac-key <eab-hmac-key>
+  # Tell acme.sh to use Let's Encrypt instead of ZeroSSL.
+  podman run --rm -it -v acme-sh:/acme.sh:z docker.io/neilpang/acme.sh:latest --register-account -m <email> --server letsencrypt
 
   # Auth for simply.com
   export SIMPLY_ApiKey=<api key>
   export SIMPLY_AccountName=<account name>
 
   # Issue cert for *.z3n.dk
-  podman run --rm -it -v acme-sh:/acme.sh:z --env=SIMPLY_* docker.io/neilpang/acme.sh:latest --issue --dns dns_simply -d *.z3n.dk
+  podman run --rm -it -v acme-sh:/acme.sh:z --env=SIMPLY_* docker.io/neilpang/acme.sh:latest --issue --dns dns_simply -d *.z3n.dk --server letsencrypt
 #+end_src
