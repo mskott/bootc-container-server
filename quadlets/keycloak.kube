@@ -1,8 +1,0 @@
-[Unit]
-Description=Keycloak identity management
-
-[Kube]
-Yaml=/usr/local/etc/keycloak.yaml
-
-[Install]
-WantedBy=multi-user.target default.target

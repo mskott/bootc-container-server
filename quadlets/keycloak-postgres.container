@@ -1,0 +1,23 @@
+[Unit]
+Description=Postgres DB for Keycloak
+
+[Container]
+AutoUpdate=registry
+ContainerName=postgresql
+Image=docker.io/library/postgres:18.3
+Label=app=keycloak
+Pod=keycloak.pod
+
+Environment=POSTGRES_USER=keycloak
+Environment=POSTGRES_DB=keycloak
+Environment=POSTGRES_INITDB_ARGS=--data-checksums
+
+Secret=keycloak-postgresql,type=env,target=POSTGRES_PASSWORD
+
+Volume=keycloak-postgres-data.volume:/var/lib/postgresql:z
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
