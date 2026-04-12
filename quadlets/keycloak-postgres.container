@@ -3,7 +3,7 @@ Description=Postgres DB for Keycloak
 
 [Container]
 AutoUpdate=registry
-ContainerName=postgresql
+ContainerName=keycloak-postgresql
 Image=docker.io/library/postgres:18.3
 Label=app=keycloak
 Pod=keycloak.pod
@@ -15,6 +15,13 @@ Environment=POSTGRES_INITDB_ARGS=--data-checksums
 Secret=keycloak-postgresql,type=env,target=POSTGRES_PASSWORD
 
 Volume=keycloak-postgres-data.volume:/var/lib/postgresql:z
+
+# Health check - verify PostgreSQL is accepting connections
+HealthCmd=/usr/bin/pg_isready -U keycloak
+HealthInterval=30s
+HealthTimeout=5s
+HealthRetries=3
+HealthStartPeriod=30s
 
 [Service]
 Restart=always
