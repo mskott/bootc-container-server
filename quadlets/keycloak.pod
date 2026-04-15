@@ -1,0 +1,5 @@
+[Pod]
+PodName=keycloak
+PublishPort=8080:8080
+Label=app=keycloak
+Network=podman-default-kube-network

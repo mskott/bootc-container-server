@@ -1,0 +1,18 @@
+[Unit]
+Description=Create backup of Keycloak Postgresql database
+
+[Container]
+Label=app=keycloak
+Image=docker.io/library/postgres:18.3
+AutoUpdate=registry
+Volume=/var/local/backups:/backup:z
+Exec=sh -c "/usr/bin/pg_dump > /backup/keycloak.sql"
+Pod=keycloak.pod
+
+# Configure the database to back up
+Environment=PGUSER=keycloak
+Environment=PGDATABASE=keycloak
+Environment=PGHOST=localhost
+
+[Service]
+Type=oneshot

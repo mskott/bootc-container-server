@@ -60,3 +60,31 @@ Certificates are managed by [[https://acme.sh/][acme.sh]] which is run on a dail
   # Issue cert for *.z3n.dk
   podman run --rm -it -v acme-sh:/acme.sh:z --env=SIMPLY_* docker.io/neilpang/acme.sh:latest --issue --dns dns_simply -d *.z3n.dk --server letsencrypt
 #+end_src
+
+** Secrets
+The services running on the server require some secrets to be defined. Since the services using them are describes a Kubernetes resources the secrets must be complete Kubernetes secrets. Example:
+#+begin_src yaml
+  kind: Secret
+  ApiVersion: v1
+  data:
+    password: <secret>
+#+end_src
+
+The password needs to be base64 encoded and prefeably not include a '\n' at the end:
+#+begin_src shell
+  # Generate password using pwgen
+  pwgen -s 32 1 | tr -d '\n' | base64
+
+  # Encode a known password
+  echo -n hunter42 | base64 -
+#+end_src
+
+The secret can then be created as usual:
+#+begin_src shell
+  podman secret create <name> - < <yaml file>
+#+end_src
+
+*** Required secrets
+- immich-postgresql :: DB password used by Immich
+- keycloak-postgresql :: DB password used by Keycloak
+- keycloak-admin :: Password for temporary Keycloak admin user

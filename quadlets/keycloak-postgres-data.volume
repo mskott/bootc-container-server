@@ -1,0 +1,6 @@
+[Unit]
+Description=Keycloak Postgres data
+
+[Volume]
+Label=app=keycloak
+VolumeName=keycloak-postgres-data

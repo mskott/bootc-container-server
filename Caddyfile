@@ -21,4 +21,9 @@
 	handle @photos {
 		reverse_proxy immich:2283
 	}
+
+	@login host login.z3n.dk
+	handle @login {
+		reverse_proxy keycloak:8080
+	}
 }

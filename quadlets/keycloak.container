@@ -1,0 +1,34 @@
+[Unit]
+Description=Keycloak SSO service
+After=keycloak-postgres.container
+Requires=keycloak-postgres.container
+
+[Container]
+AutoUpdate=registry
+ContainerName=keycloak
+Image=quay.io/keycloak/keycloak:26.6
+Exec=start
+Label=app=keycloak
+Pod=keycloak.pod
+
+# Database connection settings
+Environment=KC_DB=postgres
+Environment=KC_DB_URL_DATABASE=keycloak
+Environment=KC_DB_URL_HOST=localhost
+Environment=KC_DB_USERNAME=keycloak
+Secret=keycloak-postgresql,type=env,target=KC_DB_PASSWORD
+
+# Bootstrap admin setup
+Environment=KC_BOOTSTRAP_ADMIN_USERNAME=admin
+Secret=keycloak-admin,type=env,target=KC_BOOTSTRAP_ADMIN_PASSWORD
+
+Environment=KC_HEALTH_ENABLED=true
+Environment=KC_HOSTNAME=https://login.z3n.dk
+Environment=KC_HTTP_ENABLED=true
+Environment=KC_PROXY_HEADERS=xforwarded
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

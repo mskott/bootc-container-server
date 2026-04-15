@@ -1,0 +1,9 @@
+[Unit]
+Description=Backup Keycloak database
+
+[Timer]
+OnCalendar=daily
+RandomizedDelaySec=100min
+
+[Install]
+WantedBy=timers.target
