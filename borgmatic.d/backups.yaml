@@ -1,0 +1,7 @@
+<<: !include /etc/borgmatic/common.yaml
+
+constants:
+  app_name: backups
+
+source_directories:
+  - /var/local/backups
