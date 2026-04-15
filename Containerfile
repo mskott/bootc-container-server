@@ -22,11 +22,13 @@ RUN systemctl enable \
     var-local-spinnaker.mount \
     var-local-marie.mount \
     var-local-pictures.mount \
+    var-local-backups.mount \
     cockpit.socket \
     podman-auto-update.timer \
     alloy.service \
     borgmatic.timer \
-    acme-sh.timer
+    acme-sh.timer \
+    keycloak-backup.timer
 
 
 COPY quadlets/ /usr/share/containers/systemd/
