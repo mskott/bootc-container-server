@@ -1,5 +1,4 @@
 FROM quay.io/fedora/fedora-bootc:43
-COPY grafana.repo /etc/yum.repos.d/
 RUN dnf install -y \
     cockpit \
 #    cockpit-machines \
@@ -9,7 +8,6 @@ RUN dnf install -y \
     tmux \
     borgbackup borgmatic \
     smartmontools \
-    alloy \
     tcpdump \
     tuned \
     && dnf clean all && rm -f /var/log/dnf5.log
@@ -25,7 +23,6 @@ RUN systemctl enable \
     var-local-backups.mount \
     cockpit.socket \
     podman-auto-update.timer \
-    alloy.service \
     borgmatic.timer \
     acme-sh.timer \
     keycloak-backup.timer
@@ -34,8 +31,6 @@ RUN systemctl enable \
 COPY quadlets/ /usr/share/containers/systemd/
 COPY Caddyfile /usr/local/etc/caddy/
 COPY immich.yaml readeck.yaml caddy.yaml /usr/local/etc/
-COPY tmpfiles.d/alloy.conf /usr/local/lib/tmpfiles.d/alloy.conf
-COPY sysusers.d/alloy.conf /usr/local/lib/sysusers.d/alloy.conf
 
 # Borgmatic setup
 COPY borgmatic-common.yaml /etc/borgmatic/common.yaml
