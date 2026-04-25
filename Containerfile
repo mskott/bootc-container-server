@@ -21,6 +21,7 @@ RUN systemctl enable \
     var-local-marie.mount \
     var-local-pictures.mount \
     var-local-backups.mount \
+    var-local-nextcloud.mount \
     cockpit.socket \
     podman-auto-update.timer \
     borgmatic.timer \

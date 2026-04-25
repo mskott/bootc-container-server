@@ -1,0 +1,5 @@
+[Pod]
+PodName=nextcloud
+PublishPort=8090:80
+Label=app=nextcloud
+Network=podman-default-kube-network

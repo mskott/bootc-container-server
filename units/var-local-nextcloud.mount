@@ -1,0 +1,7 @@
+[Mount]
+What=/dev/export/nextcloud
+Where=/var/local/nextcloud
+Type=xfs
+
+[Install]
+WantedBy=multi-user.target

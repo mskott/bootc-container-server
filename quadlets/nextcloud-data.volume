@@ -1,0 +1,6 @@
+[Unit]
+Description=Nextcloud data
+
+[Volume]
+Label=app=nextcloud
+VolumeName=nextcloud-data

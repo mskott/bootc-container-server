@@ -26,4 +26,13 @@
 	handle @login {
 		reverse_proxy keycloak:8080
 	}
+
+	@nextcloud host cloud.z3n.dk
+	handle @nextcloud {
+		# https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/reverse_proxy_configuration.html#caddy
+		redir /.well-known/carddav /remote.php/dav/ 301
+		redir /.well-known/caldav /remote.php/dav/ 301
+
+		reverse_proxy nextcloud:8090
+	}
 }

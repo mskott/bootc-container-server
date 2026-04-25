@@ -85,6 +85,7 @@ The secret can then be created as usual:
 #+end_src
 
 *** Required secrets
-- immich-postgresql :: DB password used by Immich
+- immich-postgresql :: DB password used by Immich (K8S)
 - keycloak-postgresql :: DB password used by Keycloak
 - keycloak-admin :: Password for temporary Keycloak admin user
+- nextcloud-admin :: Password for Nextcloud admin user
