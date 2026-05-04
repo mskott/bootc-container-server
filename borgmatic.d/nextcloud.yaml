@@ -1,0 +1,7 @@
+<<: !include /etc/borgmatic/common.yaml
+
+constants:
+  app_name: nextcloud
+
+source_directories:
+  - /var/local/nextcloud
