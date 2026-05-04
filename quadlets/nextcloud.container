@@ -22,6 +22,9 @@ Environment=APACHE_DISABLE_REWRITE_IP=1
 # Subnet of podman-default-kube-network
 Environment=TRUSTED_PROXIES=10.89.0.0/24
 
+# Add url to list of trusted domains
+Environment=NEXTCLOUD_TRUSTED_DOMAINS=cloud.z3n.dk
+
 # Use of Redis is recommended by Nextcloud
 Environment=REDIS_HOST=localhost
 
