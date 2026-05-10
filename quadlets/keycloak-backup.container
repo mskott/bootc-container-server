@@ -1,5 +1,7 @@
 [Unit]
 Description=Create backup of Keycloak Postgresql database
+After=keycloak-postgres.service
+Wants=keycloak-postgres.service
 
 [Container]
 Label=app=keycloak
