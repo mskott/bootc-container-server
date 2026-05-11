@@ -10,6 +10,9 @@ Pod=collabora.pod
 
 Environment=aliasgroup1=https://cloud.z3n.dk:443
 
+#Configure dictionaries and thesauri to load
+Environment=dictionaries="en_GB en_US da_DK"
+
 [Service]
 Restart=always
 
