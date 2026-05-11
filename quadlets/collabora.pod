@@ -1,0 +1,5 @@
+[Pod]
+PodName=collabora
+PublishPort=9980:9980
+Label=app=collabora
+Network=podman-default-kube-network

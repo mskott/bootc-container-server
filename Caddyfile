@@ -35,4 +35,9 @@
 
 		reverse_proxy nextcloud:80
 	}
+
+	@collabora host collabora.z3n.dk
+	handle @collabora {
+		reverse_proxy collabora:9980
+	}
 }

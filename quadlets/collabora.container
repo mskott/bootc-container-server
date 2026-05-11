@@ -1,0 +1,17 @@
+[Unit]
+Description=Collabora Online Office
+
+[Container]
+AutoUpdate=registry
+ContainerName=collabora
+Image=docker.io/collabora/code:latest
+Label=app=collabora-code
+Pod=collabora.pod
+
+Environment=aliasgroup1=https://cloud.z3n.dk:443
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
