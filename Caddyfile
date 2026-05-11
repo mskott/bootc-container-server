@@ -38,6 +38,10 @@
 
 	@collabora host collabora.z3n.dk
 	handle @collabora {
-		reverse_proxy collabora:9980
+		reverse_proxy https://collabora:9980 {
+			transport http {
+				tls_insecure_skip_verify
+			}
+		}
 	}
 }
