@@ -23,6 +23,9 @@ jobs:
     name: Build and push image
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write # SBOM needs write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -50,3 +53,8 @@ jobs:
           image: ${{ steps.build-image.outputs.image }}
           tags: ${{ steps.build-image.outputs.tags }}
           registry: ${{ env.REGISTRY }}
+
+      - name: Generate SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.FEDORA_RELEASE }}
