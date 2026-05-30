@@ -10,7 +10,8 @@ on:
       - '.gitignore'
   workflow_dispatch:
 
-permissions: {}
+permissions:
+  contents: read
 
 env:
   REGISTRY: quay.io
@@ -19,10 +20,8 @@ env:
 
 jobs:
   build-and-push-image:
+    name: Build and push image
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
 
     steps:
       - name: Checkout repository
