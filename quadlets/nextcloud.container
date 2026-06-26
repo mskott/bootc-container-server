@@ -5,7 +5,7 @@ After=var-local-nextcloud.mount
 [Container]
 AutoUpdate=registry
 ContainerName=nextcloud
-Image=docker.io/library/nextcloud:33
+Image=docker.io/library/nextcloud:34
 Label=app=nextcloud
 Pod=nextcloud.pod
 Volume=/var/local/nextcloud:/var/www/html:Z
