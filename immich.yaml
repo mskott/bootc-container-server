@@ -90,7 +90,6 @@ spec:
       mountPath: /etc/localtime
     - name: pictures
       mountPath: /mnt/Pictures
-      readOnly: true
   volumes:
   - name: postgresql-data
     persistentVolumeClaim:
