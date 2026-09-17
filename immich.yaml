@@ -60,12 +60,12 @@ spec:
     - name: postgresql-data
       mountPath: /var/lib/postgresql/data
   - name: immich-ml
-    image: ghcr.io/immich-app/immich-machine-learning:release
+    image: ghcr.io/immich-app/immich-machine-learning:v3
     volumeMounts:
     - name: model-cache
       mountPath: /cache
   - name: immich-server
-    image: ghcr.io/immich-app/immich-server:release
+    image: ghcr.io/immich-app/immich-server:v3
     ports:
     - containerPort: 2283
       hostPort: 2283
