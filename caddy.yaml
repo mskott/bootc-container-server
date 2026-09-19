@@ -20,7 +20,7 @@ metadata:
 spec:
   containers:
     - name: caddy
-      image: docker.io/caddy:2.10
+      image: docker.io/caddy:2.11
       volumeMounts:
         - name: caddy-data
           mountPath: /data
