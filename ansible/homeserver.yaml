@@ -1,0 +1,7 @@
+---
+- name: Configure a homeserver
+  hosts: homeserver
+  gather_facts: false
+  roles:
+    - volumes
+#    - forgejo

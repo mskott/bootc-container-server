@@ -1,0 +1,13 @@
+---
+
+- name: Create Forgejo pod
+  become: yes
+  containers.podman.podman_pod:
+    name: forgejo
+    state: quadlet
+    label:
+      app: forgejo
+    ports:
+      - "3000:3000"
+#  notify:
+#    - reload systemd

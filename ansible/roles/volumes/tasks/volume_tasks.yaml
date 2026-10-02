@@ -1,0 +1,32 @@
+---
+- name: Process volume
+  debug:
+    var: item
+    verbosity: 1
+
+- name: Create LV - {{ item.name }}
+  become: yes
+  community.general.lvol:
+    lv: "{{ item.name }}"
+    vg: "{{ item.vg | default(volumes_default_volumegroup) }}"
+    size: "{{ item.size }}"
+
+- name: Create filesystem - {{ item.name }}
+  become: yes
+  community.general.filesystem:
+    dev: "{{ ('/dev', item.vg|default(volumes_default_volumegroup) , item.name) | path_join }}"
+    fstype: xfs
+    opts: "-L {{ item.name }}"
+
+- name: Create mount unit - {{ item.name }}
+  become: yes
+  ansible.builtin.template:
+    src: 'volume.mount.j2'
+    dest: '/etc/systemd/system/var-local-{{ item.name }}.mount'
+    mode: '0644'
+    owner: root
+    group: root
+  notify:
+    - systemd_restart
+
+#- name: Setup backup - {{ item.name }}
