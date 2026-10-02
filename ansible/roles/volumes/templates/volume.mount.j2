@@ -1,0 +1,7 @@
+[Mount]
+What={{ ('/dev', item.vg|default(volumes_default_volumegroup) , item.name) | path_join }}
+Where=/var/local/{{ item.name }}
+Type=xfs
+
+[Install]
+WantedBy=multi-user.target

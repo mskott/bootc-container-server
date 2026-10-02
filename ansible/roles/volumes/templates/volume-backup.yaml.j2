@@ -1,0 +1,7 @@
+<<: !include /etc/borgmatic/common.yaml
+
+constants:
+  app_name: {{ item.name }}
+
+source_directories:
+  - /var/local/{{ item.name }}

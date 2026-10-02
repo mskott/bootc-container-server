@@ -26,7 +26,19 @@
     mode: '0644'
     owner: root
     group: root
-  notify:
-    - systemd_restart
 
-#- name: Setup backup - {{ item.name }}
+- name: Enable mount unit - {{ item.name }}
+  become: yes
+  ansible.builtin.systemd:
+    name: "var-local-{{ item.name }}.mount"
+    enabled: true
+    state: started
+
+- name: Setup backup - {{ item.name }}
+  become: yes
+  ansible.builtin.template:
+    src: 'volume-backup.yaml.j2'
+    dest: '/etc/borgmatic.d/{{ item.name }}.yaml'
+    mode: '0644'
+    owner: root
+    group: root
