@@ -8,6 +8,7 @@ on:
     paths-ignore:
       - 'README.org'
       - '.gitignore'
+      - 'ansible/**'
   workflow_dispatch:
 
 permissions:
