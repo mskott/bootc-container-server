@@ -6,6 +6,7 @@ ContainerName=nextcloud-redis
 Image=registry.access.redhat.com/hi/valkey:9
 Label=app=nextcloud
 Pod=nextcloud.pod
+AutoUpdate=registry
 
 [Service]
 Restart=always

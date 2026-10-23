@@ -38,6 +38,7 @@ metadata:
   annotations:
     io.containers.autoupdate/immich-ml: registry
     io.containers.autoupdate/immich-server: registry
+    io.containers.autoupdate/redis: registry
 spec:
   containers:
   - name: redis
