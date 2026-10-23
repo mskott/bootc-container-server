@@ -1,0 +1,7 @@
+homeserver:
+  hosts:
+    guppy.z3n.dk:
+      volumes:
+        - name: forgejo
+          size: 5G
+          backup: yes

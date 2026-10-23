@@ -1,0 +1,35 @@
+---
+- name: Create Forgejo pod
+  become: yes
+  containers.podman.podman_pod:
+    name: forgejo
+    state: quadlet
+    label:
+      app: forgejo
+    ports:
+      - "3000:3000"
+    network: "podman-default-kube-network"
+  notify:
+    - restart forgejo
+
+- name: Create Forgejo container
+  become: yes
+  containers.podman.podman_container:
+    name: forgejo
+    state: quadlet
+    pod: forgejo.pod
+    label:
+      app: forgejo
+    image: "{{ forgejo_image }}:{{ forgejo_tag }}"
+    volume:
+      - "/var/local/forgejo:/data:z"
+    quadlet_options:
+      - "AutoUpdate=registry"
+      - |
+        [Service]
+        Restart=always
+      - |
+        [Install]
+        WantedBy=multi-user.target
+  notify:
+    - restart forgejo

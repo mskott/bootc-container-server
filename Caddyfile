@@ -44,4 +44,10 @@
 			}
 		}
 	}
+
+	@forgejo host git.z3n.dk
+	handle @forgejo {
+		reverse_proxy forgejo:3000
+	}
+
 }

@@ -1,0 +1,10 @@
+---
+- name: Show volumes
+  debug:
+    var: volumes | d([])
+    verbosity: 1
+
+- name: Setup volumes
+  ansible.builtin.include_tasks:
+    file: volume_tasks.yaml
+  loop: "{{ volumes }}"

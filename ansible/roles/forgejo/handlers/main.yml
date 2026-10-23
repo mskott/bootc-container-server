@@ -1,0 +1,7 @@
+#SPDX-License-Identifier: MIT-0
+---
+- name: restart forgejo
+  ansible.builtin.systemd:
+    name: forgejo
+    state: restarted
+    daemon_reload: true

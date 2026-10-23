@@ -1,0 +1,4 @@
+#SPDX-License-Identifier: MIT-0
+---
+forgejo_image: codeberg.org/forgejo/forgejo
+forgejo_tag: 17
