@@ -21,6 +21,9 @@
     label:
       app: forgejo
     image: "{{ forgejo_image }}:{{ forgejo_tag }}"
+    env:
+      FORGEJO__database__DB_TYPE=sqlite3
+      FORGEJO__server__DISABLE_SSH=true
     volume:
       - "/var/local/forgejo:/data:z"
     quadlet_options:
