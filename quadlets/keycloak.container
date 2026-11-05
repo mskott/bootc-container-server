@@ -6,7 +6,7 @@ Requires=keycloak-postgres.container
 [Container]
 AutoUpdate=registry
 ContainerName=keycloak
-Image=quay.io/keycloak/keycloak:26.6
+Image=quay.io/keycloak/keycloak:26.8
 Exec=start
 Label=app=keycloak
 Pod=keycloak.pod
